@@ -1,4 +1,12 @@
 function seed() {
+  /*The JavaScript array prototype constructor is used to allow 
+  to add new methods and properties to the Array() object
+  *slice() method returns a shallow copy of a portion of an array into a 
+  new array object selected from start to end (end not included) where 
+  start and end represent the index of items in that array. 
+  The original array will not be modified.
+  *.call is used to assign this to the first element(an array or one element), an so on
+  */
   const args = Array.prototype.slice.call(arguments);
   return args;
 }
