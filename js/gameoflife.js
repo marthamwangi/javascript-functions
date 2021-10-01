@@ -32,7 +32,18 @@ function same([x, y], [j, k]) {
 
 // The game state to search for `cell` is passed as the `this` value of the function.
 function contains(cell) {
-  return this.same((c) => same(c, cell));
+  /**
+   * Array.prototype.some()
+   * The some() method tests whether at least one element in the array passes the test implemented by the provided function.
+   * It returns true if, in the array, it finds an element for which the provided function
+   * returns true; otherwise it returns false. It doesn't modify the array.
+   * some((element) => { ... } )
+   * some((element, index) => { ... } )
+   * some((element, index, array) => { ... } )
+   */
+  return thissome((c) => {
+    same(c, cell);
+  });
 }
 
 const printCell = (cell, state) => {
