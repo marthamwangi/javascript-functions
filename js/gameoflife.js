@@ -41,7 +41,7 @@ function contains(cell) {
    * some((element, index) => { ... } )
    * some((element, index, array) => { ... } )
    */
-  return thissome((c) => {
+  return this.some((c) => {
     same(c, cell);
   });
 }
