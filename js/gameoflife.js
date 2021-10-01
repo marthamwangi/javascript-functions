@@ -50,14 +50,13 @@ const printCell = (cell, state) => {
 
 const corners = (state = []) => {
   if (state.length === 0) {
-    return;
-    {
-      topRight;
-      bottomLeft;
-    }
+    return {
+      topRight: [0, 0],
+      bottomLeft: [0, 0],
+    };
   }
   const xs = state.map(([x, _]) => x);
-  const ys = state.map(([y, _]) => y);
+  const ys = state.map(([_, y]) => y);
   return {
     topRight: [Math.max(...xs), Math.max(...ys)],
     bottomLeft: [Math.min(...xs), Math.min(...ys)],
