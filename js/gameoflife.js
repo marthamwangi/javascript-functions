@@ -32,7 +32,7 @@ function same([x, y], [j, k]) {
 
 // The game state to search for `cell` is passed as the `this` value of the function.
 function contains(cell) {
-  return this.some((c) => same(c, cell));
+  return this.same((c) => same(c, cell));
 }
 
 const printCell = (cell, state) => {
@@ -40,19 +40,17 @@ const printCell = (cell, state) => {
 };
 
 const corners = (state = []) => {
-  if (state.length === 0)
-  {
-    return
+  if (state.length === 0) {
+    return;
     {
-      topRight: [0,0],
-      bottomLeft: [0,0]
     }
   }
   const xs = state.map(([x, _]) => x);
   const ys = state.map(([y, _]) => y);
   return {
-    topRight:[Math.max(...xs), Math.max(...ys)]
-  }
+    topRight: [Math.max(...xs), Math.max(...ys)],
+    bottomLeft: [Math.min(...xs), Math.min(...ys)],
+  };
 };
 
 const printCells = (state) => {};
