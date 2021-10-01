@@ -41,9 +41,7 @@ function contains(cell) {
    * some((element, index) => { ... } )
    * some((element, index, array) => { ... } )
    */
-  return this.some((c) => {
-    same(c, cell);
-  });
+  return this.some((c) => same(c, cell));
 }
 
 const printCell = (cell, state) => {
