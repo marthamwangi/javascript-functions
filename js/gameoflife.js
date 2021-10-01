@@ -6,6 +6,21 @@ function seed() {
   start and end represent the index of items in that array. 
   The original array will not be modified.
   *.call is used to assign this to the first element(an array or one element), an so on
+ *'arguments' is an Array-like object accessible inside functions that 
+ contains the values of the arguments passed to that function.
+ example:
+ function func1(a, b, c) {
+  console.log(arguments[0]);
+  // expected output: 1
+
+  console.log(arguments[1]);
+  // expected output: 2
+
+  console.log(arguments[2]);
+  // expected output: 3
+}
+
+func1(1, 2, 3);
   */
   const args = Array.prototype.slice.call(arguments);
   return args;
@@ -16,11 +31,29 @@ function same([x, y], [j, k]) {
 }
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) {}
+function contains(cell) {
+  return this.some((c) => same(c, cell));
+}
 
-const printCell = (cell, state) => {};
+const printCell = (cell, state) => {
+  return contains.call(state, cell) ? "\u25A3" : "\u25A2";
+};
 
-const corners = (state = []) => {};
+const corners = (state = []) => {
+  if (state.length === 0)
+  {
+    return
+    {
+      topRight: [0,0],
+      bottomLeft: [0,0]
+    }
+  }
+  const xs = state.map(([x, _]) => x);
+  const ys = state.map(([y, _]) => y);
+  return {
+    topRight:[Math.max(...xs), Math.max(...ys)]
+  }
+};
 
 const printCells = (state) => {};
 
